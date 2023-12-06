@@ -1,23 +1,22 @@
 import cv2
-import numpy as np
 
-video = cv2.VideoCapture('video/sample.mp4')
+# Open a video file for writing
+output_path = 'video_1/demo.mp4'
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # Use the default codec for MP4
+out = cv2.VideoWriter(output_path, fourcc, 20.0, (640, 480))  # Adjust parameters as needed
 
-if video.isOpened() == False:
-    print('Error! video file not open')
+# Generate frames (for demonstration purposes, you can replace this with actual frames)
+for i in range(100):
+    frame = cv2.putText(
+        cv2.imread('image/1.jpg'), f'Frame {i}', (50, 50),
+        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA
+    )
 
-while True:
-    if video.isOpened():
-        ret, frame = video.read()
-        if ret == True:
-            cv2.imshow('frame', frame)
+    # Resize the frame to match the specified dimensions
+    frame = cv2.resize(frame, (640, 480))
 
-            if cv2.waitKey(25) == ord('q'):
-                break
-    
-    else:
-        break
+    # Write the frame to the video file
+    out.write(frame)
 
-video.release()
-
-cv2.destroyAllWindows()
+# Release the video writer object
+out.release()

@@ -1,3 +1,5 @@
+# if you want play the video actual size
+
 import cv2
 import numpy as np
 
