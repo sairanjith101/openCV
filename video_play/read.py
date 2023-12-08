@@ -13,7 +13,9 @@ if (cap.isOpened()== False):
 while(cap.isOpened()): 
 	
 # Capture frame-by-frame 
-	ret, frame = cap.read() 
+	ret, frame = cap.read()
+    # Resize the frame to match the specified dimensions
+	frame = cv2.resize(frame, (640, 480)) 
 	if ret == True: 
 	# Display the resulting frame 
 		cv2.imshow('Frame', frame) 

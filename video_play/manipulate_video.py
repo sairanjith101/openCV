@@ -1,7 +1,7 @@
 import cv2
 
 # Open a video file for reading
-video_path = 'path/to/your/video.mp4'
+video_path = 'video/sample.mp4'
 cap = cv2.VideoCapture(video_path)
 
 # Check if the video opened successfully
@@ -10,8 +10,8 @@ if not cap.isOpened():
     exit()
 
 # Create a video writer object for the output
-output_path = 'path/to/your/output/resized_video.avi'
-fourcc = cv2.VideoWriter_fourcc(*'XVID')
+output_path = 'video_path/demo3.mp4'
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 out = cv2.VideoWriter(output_path, fourcc, 20.0, (640, 480))  # Adjust parameters as needed
 
 # Read, resize, and write frames
